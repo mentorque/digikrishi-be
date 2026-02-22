@@ -52,6 +52,11 @@ const Farmer = sequelize.define('Farmer', {
         allowNull: true,
         references: { model: 'users', key: 'id' },
     },
+    profile_pic_url: {
+        type: DataTypes.STRING(2048),
+        allowNull: true,
+        comment: 'CDN URL for profile picture',
+    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
@@ -65,7 +70,11 @@ const Farmer = sequelize.define('Farmer', {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-    indexes: [{ fields: ['tenant_id'] }, { fields: ['name'] }],
+    indexes: [
+        { fields: ['tenant_id'] },
+        { fields: ['name'] },
+        { fields: ['tenant_id', 'created_at'] }, // list with order by created_at
+    ],
 });
 export default Farmer;
 //# sourceMappingURL=Farmer.js.map

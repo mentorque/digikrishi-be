@@ -7,6 +7,7 @@ const farmersMapping = {
         mobile: { type: 'keyword' },
         district: { type: 'keyword' },
         state: { type: 'keyword' },
+        village: { type: 'text', fields: { keyword: { type: 'keyword' } } },
         fpc: { type: 'keyword' },
         farmer_code: { type: 'keyword' },
         tenant_id: { type: 'keyword' },
@@ -32,6 +33,7 @@ export function toFarmerDoc(farmer, address, profile) {
         mobile: farmer.mobile ?? (farmer.User?.mobile ?? ''),
         district: address?.district ?? '',
         state: address?.state ?? '',
+        village: address?.village ?? '',
         fpc: profile?.fpc ?? '',
         farmer_code: farmer.farmer_code ?? '',
     };
@@ -49,21 +51,36 @@ export async function bulkIndexFarmers(farmers) {
         return;
     const body = farmers.flatMap((f) => [
         { index: { _index: FARMERS_INDEX, _id: f.id } },
-        toFarmerDoc(f, f.FarmerAddress, f.FarmerProfileDetails),
+        toFarmerDoc(f, f.FarmerAddress, f.FarmerProfileDetail),
     ]);
     await elasticsearchClient.bulk({ refresh: true, operations: body });
 }
+/**
+ * Search farmers by name (full or partial, fuzzy), farmer code (exact or prefix),
+ * farmer id (exact), or village (fuzzy). Returns ordered farmer ids for hydration.
+ */
 export async function searchFarmers(query, tenantId, page = 1, limit = 20) {
     const from = (page - 1) * limit;
     const must = [{ term: { tenant_id: tenantId } }];
-    if (query && query.trim()) {
+    const q = query?.trim() ?? '';
+    if (q) {
         must.push({
             bool: {
                 should: [
-                    { match: { name: { query, fuzziness: 'AUTO' } } },
-                    { term: { email: query } },
-                    { term: { mobile: query } },
-                    { term: { farmer_code: query } },
+                    // Full name or first/last name, fuzzy (typo-tolerant)
+                    { match: { name: { query: q, fuzziness: 'AUTO' } } },
+                    // Phrase prefix: "Raghav" -> "Raghavendra Gowda01"
+                    { match_phrase_prefix: { name: { query: q } } },
+                    // Exact farmer code
+                    { term: { farmer_code: q } },
+                    // Prefix on farmer code: "F50" matches "F5001", "F5023"
+                    { prefix: { farmer_code: q } },
+                    // Exact farmer id (UUID)
+                    { term: { farmer_id: q } },
+                    // Village, fuzzy
+                    { match: { village: { query: q, fuzziness: 'AUTO' } } },
+                    { term: { email: q } },
+                    { term: { mobile: q } },
                 ],
                 minimum_should_match: 1,
             },
@@ -76,7 +93,9 @@ export async function searchFarmers(query, tenantId, page = 1, limit = 20) {
         query: { bool: { must } },
     });
     const hits = result.hits.hits;
-    const total = typeof result.hits.total === 'number' ? result.hits.total : result.hits.total?.value ?? 0;
-    return { hits: hits.map((h) => ({ id: h._id, ...h._source })), total };
+    const total = typeof result.hits.total === 'number'
+        ? result.hits.total
+        : result.hits.total?.value ?? 0;
+    return { ids: hits.map((h) => h._id), total };
 }
 //# sourceMappingURL=elasticsearch.service.js.map

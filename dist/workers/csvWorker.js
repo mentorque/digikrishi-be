@@ -3,7 +3,7 @@ import { createReadStream } from 'fs';
 import csv from 'csv-parser';
 import { Worker } from 'bullmq';
 import { env } from '../config/env.js';
-import { sequelize, Farmer, FarmerAddress, FarmerProfileDetails, User, CsvUploadJob, } from '../models/index.js';
+import { sequelize, Farmer, FarmerAddress, FarmerProfileDetails, FarmerDoc, User, CsvUploadJob, } from '../models/index.js';
 import * as elasticsearchService from '../services/elasticsearch.service.js';
 import * as csvService from '../services/csv.service.js';
 import logger from '../utils/logger.js';
@@ -26,6 +26,8 @@ async function processBatch(rows, tenantId, agentId) {
         defaultUserId = u.id;
     const farmersToCreate = [];
     const addressesToCreate = [];
+    const profileDetailsToCreate = [];
+    const docsToCreate = [];
     for (const row of rows) {
         const { valid, data } = validateRow(row);
         if (!valid)
@@ -37,6 +39,11 @@ async function processBatch(rows, tenantId, agentId) {
         });
         if (existing)
             continue;
+        const profilePic = data.profile_pic_url ||
+            data.profilePicUrl ||
+            data['Profile Pic URL'] ||
+            data['profile_pic_url'] ||
+            null;
         farmersToCreate.push({
             farmer_code: farmerCode,
             user_id: defaultUserId || null,
@@ -48,6 +55,7 @@ async function processBatch(rows, tenantId, agentId) {
             kyc_status: data.kyc_status || data.kycStatus || 'PENDING',
             is_activated: true,
             created_by_agent_id: agentId,
+            profile_pic_url: profilePic || null,
         });
         addressesToCreate.push({
             village: data.village || data.Village || null,
@@ -57,6 +65,22 @@ async function processBatch(rows, tenantId, agentId) {
             pincode: data.pincode || data.Pincode || null,
             landmark: data.landmark || data.Landmark || null,
         });
+        const rationVal = data.ration_card ?? data.rationCard ?? data['Ration Card'];
+        const rationCard = rationVal === true ||
+            rationVal === 'true' ||
+            rationVal === '1' ||
+            rationVal === 'yes' ||
+            rationVal === 'Yes';
+        profileDetailsToCreate.push({
+            fpc: data.fpc || data.FPC || null,
+            shg: data.shg || data.SHG || null,
+            caste: data.caste || data.Caste || null,
+            social_category: data.social_category || data.socialCategory || data['Social Category'] || null,
+            ration_card: !!rationCard,
+        });
+        const panUrl = (data.pan_url || data.panUrl || data['PAN URL'] || '').trim() || null;
+        const aadhaarUrl = (data.aadhaar_url || data.aadhaarUrl || data['Aadhaar URL'] || '').trim() || null;
+        docsToCreate.push({ pan_url: panUrl || null, aadhaar_url: aadhaarUrl || null });
     }
     if (farmersToCreate.length === 0)
         return { success: 0, failed: rows.length };
@@ -65,6 +89,11 @@ async function processBatch(rows, tenantId, agentId) {
         for (let i = 0; i < farmersToCreate.length; i++) {
             const f = await Farmer.create(farmersToCreate[i], { transaction: t });
             await FarmerAddress.create({ ...addressesToCreate[i], farmer_id: f.id }, { transaction: t });
+            await FarmerProfileDetails.create({ ...profileDetailsToCreate[i], farmer_id: f.id }, { transaction: t });
+            const doc = docsToCreate[i];
+            if (doc.pan_url || doc.aadhaar_url) {
+                await FarmerDoc.create({ farmer_id: f.id, pan_url: doc.pan_url, aadhaar_url: doc.aadhaar_url }, { transaction: t });
+            }
             createdFarmers.push(f);
         }
         return createdFarmers;
@@ -73,7 +102,7 @@ async function processBatch(rows, tenantId, agentId) {
         where: { id: created.map((f) => f.id) },
         include: [
             { model: FarmerAddress, as: 'FarmerAddress' },
-            { model: FarmerProfileDetails, as: 'FarmerProfileDetails' },
+            { model: FarmerProfileDetails, as: 'FarmerProfileDetail' },
         ],
     });
     await elasticsearchService.bulkIndexFarmers(withRelations);

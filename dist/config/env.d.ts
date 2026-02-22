@@ -13,5 +13,6 @@ export declare const env: {
     ELASTICSEARCH_NODE: string;
     DUCKDB_PATH: string;
     CSV_UPLOAD_PATH: string;
+    CORS_ORIGIN: string;
 };
 //# sourceMappingURL=env.d.ts.map

@@ -13,4 +13,11 @@ export declare function createToken(user: {
     role: string;
 }): string;
 export declare function getMe(userId: string): Promise<import("sequelize").Model<any, any>>;
+export declare function createFieldOfficer(tenantId: string, payload: {
+    email: string;
+    password: string;
+}): Promise<import("sequelize").Model<any, any>>;
+export declare function listFieldOfficers(tenantId: string): Promise<import("sequelize").Model<any, any>[]>;
+export declare function getMyFarmer(userId: string): Promise<import("sequelize").Model<any, any>>;
+export declare function getMyAssignedFarmers(agentId: string): Promise<any[]>;
 //# sourceMappingURL=auth.service.d.ts.map

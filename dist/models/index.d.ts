@@ -6,7 +6,8 @@ import FarmerAddress from './FarmerAddress.js';
 import FarmerProfileDetails from './FarmerProfileDetails.js';
 import FarmerLand from './FarmerLand.js';
 import FarmerAgentMap from './FarmerAgentMap.js';
+import FarmerDoc from './FarmerDoc.js';
 import CsvUploadJob from './CsvUploadJob.js';
 import OtpLog from './OtpLog.js';
-export { sequelize, Tenant, User, Farmer, FarmerAddress, FarmerProfileDetails, FarmerLand, FarmerAgentMap, CsvUploadJob, OtpLog, };
+export { sequelize, Tenant, User, Farmer, FarmerAddress, FarmerProfileDetails, FarmerLand, FarmerAgentMap, FarmerDoc, CsvUploadJob, OtpLog, };
 //# sourceMappingURL=index.d.ts.map

@@ -12,14 +12,8 @@ async function createDuckDbConnection() {
 }
 export async function getDuckDbConnection() {
     const db = await createDuckDbConnection();
-    return new Promise((resolve, reject) => {
-        db.connect((err, connection) => {
-            if (err)
-                reject(err);
-            else
-                resolve(connection);
-        });
-    });
+    // duckdb Node API: connect() returns the connection synchronously (no callback)
+    return db.connect();
 }
 export { createDuckDbConnection };
 //# sourceMappingURL=duckdb.js.map

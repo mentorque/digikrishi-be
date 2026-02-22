@@ -42,7 +42,10 @@ const User = sequelize.define('User', {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: false,
-    indexes: [{ fields: ['mobile'] }],
+    indexes: [
+        { fields: ['mobile'] },
+        { fields: ['tenant_id', 'role'] }, // lookup agent by tenant + role
+    ],
 });
 export default User;
 //# sourceMappingURL=User.js.map

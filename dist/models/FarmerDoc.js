@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.js';
-const FarmerLand = sequelize.define('FarmerLand', {
+const FarmerDoc = sequelize.define('FarmerDoc', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -10,29 +10,32 @@ const FarmerLand = sequelize.define('FarmerLand', {
         type: DataTypes.UUID,
         allowNull: false,
         references: { model: 'farmers', key: 'id' },
+        onDelete: 'CASCADE',
     },
-    land_size: {
-        type: DataTypes.DECIMAL(10, 2),
+    pan_url: {
+        type: DataTypes.STRING(2048),
         allowNull: true,
+        comment: 'CDN URL for PAN document',
     },
-    crop_type: {
-        type: DataTypes.STRING,
+    aadhaar_url: {
+        type: DataTypes.STRING(2048),
         allowNull: true,
-    },
-    irrigation_type: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        comment: 'CDN URL for Aadhaar document',
     },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
     },
+    updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+    },
 }, {
-    tableName: 'farmer_lands',
+    tableName: 'farmer_docs',
     timestamps: true,
     createdAt: 'created_at',
-    updatedAt: false,
-    indexes: [{ fields: ['farmer_id'] }], // include + destroy by farmer
+    updatedAt: 'updated_at',
+    indexes: [{ fields: ['farmer_id'] }],
 });
-export default FarmerLand;
-//# sourceMappingURL=FarmerLand.js.map
+export default FarmerDoc;
+//# sourceMappingURL=FarmerDoc.js.map

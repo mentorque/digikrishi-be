@@ -20,6 +20,7 @@ if (!fs.existsSync(uploadDir)) {
 async function start() {
     try {
         await sequelize.authenticate();
+        logger.info('PostgreSQL connected');
     }
     catch (err) {
         logger.error('PostgreSQL connection failed', { error: err?.message });
@@ -42,17 +43,23 @@ async function start() {
     }
     const port = Number(env.PORT);
     app.listen(port, '0.0.0.0', () => {
-
+        logger.info(`Server listening on port ${port}`);
         console.log(`\n✅ Server is running at http://localhost:${port}`);
         console.log(`✅ Bull Board at http://localhost:${port}/admin/queues\n`);
-        getDuckDbConnection()
+        const duckDbTimeout = 5000;
+        Promise.race([
+            getDuckDbConnection(),
+            new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), duckDbTimeout)),
+        ])
             .then((conn) => {
             if (conn && typeof conn.close === 'function')
                 conn.close();
             console.log(`✅ DuckDB ready (${env.DUCKDB_PATH === ':memory:' ? 'in-memory' : env.DUCKDB_PATH})`);
         })
             .catch((err) => {
-            logger.warn('DuckDB connection failed – analytics may fail', { error: err?.message });
+            const msg = err?.message ?? String(err);
+            logger.warn('DuckDB connection failed – analytics may fail', { error: msg });
+            console.log(`⚠️ DuckDB failed – analytics may fail: ${msg}`);
         });
         ensureFarmersIndex()
             .then(() => {

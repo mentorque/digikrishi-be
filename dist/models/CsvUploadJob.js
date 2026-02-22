@@ -41,6 +41,7 @@ const CsvUploadJob = sequelize.define('CsvUploadJob', {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: false,
+    indexes: [{ fields: ['tenant_id'] }], // getJobStatus, list by tenant
 });
 export default CsvUploadJob;
 //# sourceMappingURL=CsvUploadJob.js.map

@@ -3,4 +3,8 @@ export declare function register(req: Request, res: Response): Promise<void>;
 export declare function login(req: Request, res: Response): Promise<void>;
 export declare function logout(req: Request, res: Response): Promise<void>;
 export declare function me(req: Request, res: Response): Promise<void>;
+export declare function listFieldOfficers(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function createFieldOfficer(req: Request, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function getMyFarmer(req: Request, res: Response): Promise<void>;
+export declare function getMyAssignedFarmers(req: Request, res: Response): Promise<void>;
 //# sourceMappingURL=auth.controller.d.ts.map

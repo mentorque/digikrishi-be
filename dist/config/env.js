@@ -15,5 +15,6 @@ export const env = {
     ELASTICSEARCH_NODE: process.env.ELASTICSEARCH_NODE || 'http://localhost:9200',
     DUCKDB_PATH: process.env.DUCKDB_PATH || ':memory:',
     CSV_UPLOAD_PATH: process.env.CSV_UPLOAD_PATH || './uploads/csv',
+    CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5173',
 };
 //# sourceMappingURL=env.js.map

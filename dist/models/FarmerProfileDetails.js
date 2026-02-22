@@ -35,6 +35,7 @@ const FarmerProfileDetails = sequelize.define('FarmerProfileDetails', {
 }, {
     tableName: 'farmer_profile_details',
     timestamps: false,
+    indexes: [{ fields: ['farmer_id'] }], // join on Farmer
 });
 export default FarmerProfileDetails;
 //# sourceMappingURL=FarmerProfileDetails.js.map

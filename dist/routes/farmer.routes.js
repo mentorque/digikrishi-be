@@ -10,6 +10,7 @@ router.get('/', asyncHandler(farmerController.list));
 router.get('/:id', asyncHandler(farmerController.getOne));
 router.post('/', asyncHandler(farmerController.create));
 router.put('/:id', asyncHandler(farmerController.update));
+router.patch('/:id/agent', allowRoles('TENANT'), asyncHandler(farmerController.assignAgent));
 router.delete('/:id', asyncHandler(farmerController.remove));
 export default router;
 //# sourceMappingURL=farmer.routes.js.map

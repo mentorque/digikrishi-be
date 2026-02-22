@@ -1,1 +1,1 @@
-{"version":3,"file":"duckdb.d.ts","sourceRoot":"","sources":["../../src/config/duckdb.ts"],"names":[],"mappings":"AAEA,iBAAe,sBAAsB,IAAI,OAAO,CAAC,OAAO,CAAC,CAQxD;AAED,wBAAsB,mBAAmB,IAAI,OAAO,CAAC,OAAO,CAAC,CAQ5D;AAED,OAAO,EAAE,sBAAsB,EAAE,CAAC"}
+{"version":3,"file":"duckdb.d.ts","sourceRoot":"","sources":["../../src/config/duckdb.ts"],"names":[],"mappings":"AAEA,iBAAe,sBAAsB,IAAI,OAAO,CAAC,OAAO,CAAC,CAQxD;AAED,wBAAsB,mBAAmB,IAAI,OAAO,CAAC,OAAO,CAAC,CAI5D;AAED,OAAO,EAAE,sBAAsB,EAAE,CAAC"}

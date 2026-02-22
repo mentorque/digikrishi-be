@@ -39,6 +39,7 @@ const FarmerAddress = sequelize.define('FarmerAddress', {
     tableName: 'farmer_addresses',
     timestamps: false,
     indexes: [
+        { fields: ['farmer_id'] }, // join on Farmer
         { fields: ['district'] },
         { fields: ['state'] },
         { fields: ['pincode'] },

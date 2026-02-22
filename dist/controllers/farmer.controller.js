@@ -27,4 +27,10 @@ export async function remove(req, res) {
     await farmerService.softDelete(id, req.user.tenant_id);
     res.json({ message: 'Farmer deactivated successfully' });
 }
+export async function assignAgent(req, res) {
+    const id = String(req.params.id ?? '');
+    const agentId = req.body.agent_id || null;
+    const farmer = await farmerService.assignAgent(id, req.user.tenant_id, agentId);
+    res.json(farmer);
+}
 //# sourceMappingURL=farmer.controller.js.map

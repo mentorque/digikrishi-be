@@ -11,5 +11,14 @@ router.get('/by-district', asyncHandler(analyticsController.byDistrict));
 router.get('/by-state', asyncHandler(analyticsController.byState));
 router.get('/by-agent', asyncHandler(analyticsController.byAgent));
 router.get('/by-social-category', asyncHandler(analyticsController.bySocialCategory));
+router.get('/by-gender', asyncHandler(analyticsController.byGender));
+router.get('/by-education', asyncHandler(analyticsController.byEducation));
+router.get('/by-kyc-status', asyncHandler(analyticsController.byKycStatus));
+router.get('/by-caste', asyncHandler(analyticsController.byCaste));
+router.get('/by-fpc', asyncHandler(analyticsController.byFpc));
+router.get('/ration-card-stats', asyncHandler(analyticsController.rationCardStats));
+router.get('/by-village', asyncHandler(analyticsController.byVillage));
+router.get('/by-taluka', asyncHandler(analyticsController.byTaluka));
+router.get('/by-month', asyncHandler(analyticsController.byMonth));
 export default router;
 //# sourceMappingURL=analytics.routes.js.map

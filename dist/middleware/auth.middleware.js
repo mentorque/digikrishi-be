@@ -3,7 +3,7 @@ import { env } from '../config/env.js';
 import { User } from '../models/index.js';
 import logger from '../utils/logger.js';
 export async function authMiddleware(req, res, next) {
-    const token = req.cookies?.token;
+    const token = req.cookies?.token ?? req.headers.authorization?.replace(/^Bearer\s+/i, '');
     if (!token) {
         return res.status(401).json({ message: 'Authentication required' });
     }

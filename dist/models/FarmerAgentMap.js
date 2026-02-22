@@ -23,6 +23,10 @@ const FarmerAgentMap = sequelize.define('FarmerAgentMap', {
 }, {
     tableName: 'farmer_agent_map',
     timestamps: false,
+    indexes: [
+        { fields: ['farmer_id'] },
+        { fields: ['agent_id'] },
+    ],
 });
 export default FarmerAgentMap;
 //# sourceMappingURL=FarmerAgentMap.js.map

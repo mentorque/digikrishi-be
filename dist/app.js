@@ -11,6 +11,7 @@ import analyticsRoutes from './routes/analytics.routes.js';
 import csvRoutes from './routes/csv.routes.js';
 import { csvQueue } from './queues/csvQueue.js';
 import { errorMiddleware } from './middleware/error.middleware.js';
+import { env } from './config/env.js';
 const serverAdapter = new ExpressAdapter();
 serverAdapter.setBasePath('/admin/queues');
 createBullBoard({
@@ -19,7 +20,7 @@ createBullBoard({
 });
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: env.CORS_ORIGIN,
     credentials: true,
 }));
 app.use(express.json());

@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
-import { Tenant, User } from '../models/index.js';
+import { Tenant, User, Farmer, FarmerAddress, FarmerProfileDetails, FarmerAgentMap } from '../models/index.js';
 const SALT_ROUNDS = 10;
 export async function registerTenant({ name, email, password, }) {
     const existing = await Tenant.findOne({ where: { email } });
@@ -63,5 +63,66 @@ export async function getMe(userId) {
         throw err;
     }
     return user;
+}
+export async function createFieldOfficer(tenantId, payload) {
+    const existing = await User.findOne({ where: { email: payload.email } });
+    if (existing) {
+        const err = new Error('Email already registered');
+        err.status = 400;
+        throw err;
+    }
+    const password_hash = await bcrypt.hash(payload.password, SALT_ROUNDS);
+    const user = await User.create({
+        tenant_id: tenantId,
+        role: 'FIELD_OFFICER',
+        email: payload.email,
+        password_hash,
+        is_active: true,
+    });
+    return user;
+}
+export async function listFieldOfficers(tenantId) {
+    const users = await User.findAll({
+        where: { tenant_id: tenantId, role: 'FIELD_OFFICER' },
+        attributes: ['id', 'email', 'mobile', 'is_active', 'created_at'],
+        order: [['created_at', 'DESC']],
+    });
+    return users;
+}
+export async function getMyFarmer(userId) {
+    const farmer = await Farmer.findOne({
+        where: { user_id: userId },
+        include: [
+            { model: FarmerAddress, as: 'FarmerAddress' },
+            { model: FarmerProfileDetails, as: 'FarmerProfileDetail' },
+            {
+                model: FarmerAgentMap,
+                as: 'FarmerAgentMaps',
+                include: [{ model: User, as: 'Agent', attributes: ['id', 'email', 'mobile'] }],
+            },
+        ],
+    });
+    if (!farmer) {
+        const err = new Error('Farmer profile not found');
+        err.status = 404;
+        throw err;
+    }
+    return farmer;
+}
+export async function getMyAssignedFarmers(agentId) {
+    const maps = await FarmerAgentMap.findAll({
+        where: { agent_id: agentId },
+        include: [
+            {
+                model: Farmer,
+                as: 'Farmer',
+                include: [
+                    { model: FarmerAddress, as: 'FarmerAddress' },
+                    { model: FarmerProfileDetails, as: 'FarmerProfileDetail' },
+                ],
+            },
+        ],
+    });
+    return maps.map((m) => m.Farmer).filter(Boolean);
 }
 //# sourceMappingURL=auth.service.js.map

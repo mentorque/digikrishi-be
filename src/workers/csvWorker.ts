@@ -85,7 +85,7 @@ async function processBatch(
       pincode: data.pincode || data.Pincode || null,
       landmark: data.landmark || data.Landmark || null,
     });
-    const rationVal = data.ration_card ?? data.rationCard ?? data['Ration Card'];
+    const rationVal: unknown = data.ration_card ?? data.rationCard ?? data['Ration Card'];
     const rationCard =
       rationVal === true ||
       rationVal === 'true' ||
