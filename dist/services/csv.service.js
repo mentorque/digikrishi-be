@@ -1,10 +1,11 @@
 import { CsvUploadJob } from '../models/index.js';
-export async function createJob(tenantId, fileName, totalRows = 0) {
+export async function createJob(tenantId, fileName, options = {}) {
     const job = await CsvUploadJob.create({
         tenant_id: tenantId,
         file_name: fileName,
-        total_rows: totalRows,
+        total_rows: options.totalRows ?? 0,
         status: 'PROCESSING',
+        s3_key: options.s3Key ?? null,
     });
     return job;
 }

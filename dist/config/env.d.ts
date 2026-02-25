@@ -14,5 +14,10 @@ export declare const env: {
     DUCKDB_PATH: string;
     CSV_UPLOAD_PATH: string;
     CORS_ORIGIN: string;
+    AWS_REGION: string;
+    AWS_S3_BUCKET: string;
+    AWS_S3_BASE_PATH: string;
+    AWS_ACCESS_KEY_ID: string;
+    AWS_SECRET_ACCESS_KEY: string;
 };
 //# sourceMappingURL=env.d.ts.map

@@ -22,32 +22,39 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 async function start() {
+  console.log('Starting Digi-Krishi backend...');
+
   try {
+    console.log('Connecting to PostgreSQL...');
     await sequelize.authenticate();
-    logger.info('PostgreSQL connected');
+    console.log('✅ PostgreSQL connected');
   } catch (err: any) {
     logger.error('PostgreSQL connection failed', { error: err?.message });
+    console.error('❌ PostgreSQL failed:', err?.message);
     process.exit(1);
   }
 
   try {
+    console.log('Syncing database schema...');
     await sequelize.sync({ alter: true });
-    logger.info('Sequelize models synced');
+    console.log('✅ Database schema synced');
   } catch (err: any) {
     logger.error('Sequelize sync failed', { error: err?.message });
+    console.error('❌ Sync failed:', err?.message);
     process.exit(1);
   }
 
   try {
+    console.log('Connecting to Redis...');
     await redis.ping();
     console.log(`✅ Redis (BullMQ) ready at ${env.REDIS_HOST}:${env.REDIS_PORT}`);
   } catch (err: any) {
     logger.warn('Redis unreachable – CSV job queue will not work', { error: err?.message });
+    console.warn('⚠️ Redis unreachable – CSV queue will not work');
   }
 
   const port = Number(env.PORT);
   app.listen(port, '0.0.0.0', () => {
-    logger.info(`Server listening on port ${port}`);
     console.log(`\n✅ Server is running at http://localhost:${port}`);
     console.log(`✅ Bull Board at http://localhost:${port}/admin/queues\n`);
 

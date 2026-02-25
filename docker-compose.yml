@@ -1,0 +1,23 @@
+# Local build & run:  docker compose up -d --build
+# Push to ECR:        docker compose build && docker push 176583373853.dkr.ecr.eu-north-1.amazonaws.com/digikrishi-be:latest
+# EC2:                Copy .env, then docker compose pull && docker compose up -d (no build)
+version: '3.8'
+
+services:
+  api:
+    build: .
+    image: 176583373853.dkr.ecr.eu-north-1.amazonaws.com/digikrishi-be:latest
+    container_name: digikrishi-api
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    restart: always
+
+  worker:
+    image: 176583373853.dkr.ecr.eu-north-1.amazonaws.com/digikrishi-be:latest
+    container_name: digikrishi-worker
+    command: node dist/workers/csvWorker.js
+    env_file:
+      - .env
+    restart: always

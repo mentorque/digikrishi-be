@@ -362,3 +362,115 @@
 {"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-22T10:12:51.215Z"}
 {"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-22T10:13:35.777Z"}
 {"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-22T10:13:36.078Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T03:26:41.833Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T03:26:42.256Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T03:26:42.260Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T17:46:11.334Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T17:46:11.745Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T17:46:11.748Z"}
+{"level":"error","message":"Error Invalid email or password","method":"POST","path":"/api/auth/login","service":"khetibuddy-be","stack":"Error: Invalid email or password\n    at Module.loginUser (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/auth.service.ts:41:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async login (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/auth.controller.ts:26:16)","status":401,"timestamp":"2026-02-24T17:53:34.611Z"}
+{"level":"error","message":"Error Invalid email or password","method":"POST","path":"/api/auth/login","service":"khetibuddy-be","stack":"Error: Invalid email or password\n    at Module.loginUser (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/auth.service.ts:41:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async login (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/auth.controller.ts:26:16)","status":401,"timestamp":"2026-02-24T17:53:35.523Z"}
+{"level":"error","message":"Error Invalid email or password","method":"POST","path":"/api/auth/login","service":"khetibuddy-be","stack":"Error: Invalid email or password\n    at Module.loginUser (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/auth.service.ts:41:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async login (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/auth.controller.ts:26:16)","status":401,"timestamp":"2026-02-24T17:54:17.783Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:04.467Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:04.783Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:04.785Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:07.098Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:07.398Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:07.400Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:08.835Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:09.128Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T17:58:09.132Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T18:02:42.235Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T18:02:42.536Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T18:02:42.539Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:11.449Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:12.261Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:12.942Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:13.174Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:13.392Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:13.574Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:17.390Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:18.705Z"}
+{"level":"error","message":"Error docPayload is not defined","method":"PUT","path":"/api/farmers/8eb10d95-6ae5-4789-b7cd-a36eef61f8b4","service":"khetibuddy-be","stack":"ReferenceError: docPayload is not defined\n    at Module.update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/services/farmer.service.ts:177:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async update (/Users/yadav/Personal_Projects/Digi-Krishi/digikrishi-be/src/controllers/farmer.controller.ts:33:18)","status":500,"timestamp":"2026-02-24T18:09:43.128Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:46.481Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:46.797Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:46.799Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:50.478Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:50.767Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:50.770Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:56.445Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:56.772Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-24T18:16:56.774Z"}
+{"error":"timeout expired","level":"error","message":"PostgreSQL connection failed","service":"khetibuddy-be","timestamp":"2026-02-25T18:18:59.082Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:26:17.551Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:26:18.018Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:26:18.019Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:26:18.021Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:27:20.378Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:27:20.674Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:27:20.674Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:27:20.676Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:21.207Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:21.515Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:21.516Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:21.517Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:32.036Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:32.320Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:32.321Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:28:32.323Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:29:02.348Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:29:02.640Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:29:02.640Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:29:02.642Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:48.348Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:48.633Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:48.633Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:48.635Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:51.484Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:51.769Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:51.770Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:51.772Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:57.751Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:58.041Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:58.042Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:41:58.043Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:10.595Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:10.878Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:10.879Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:10.881Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:33.636Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:33.916Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:33.917Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:33.918Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:42.054Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:42.330Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:42.330Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:42:42.332Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T18:45:35.718Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T18:45:36.113Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T18:45:36.113Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T18:45:36.115Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T19:00:51.905Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T19:00:52.203Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T19:00:52.204Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T19:00:52.205Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T19:03:42.300Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T19:03:42.599Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T19:03:42.599Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T19:03:42.601Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T19:07:47.139Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T19:07:47.443Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T19:07:47.444Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T19:07:47.446Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T19:10:55.581Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T19:10:56.211Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T19:10:56.213Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T19:10:56.215Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T19:11:49.870Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T19:11:50.177Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T19:11:50.178Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T19:11:50.180Z"}
+{"level":"info","message":"PostgreSQL connected","service":"khetibuddy-be","timestamp":"2026-02-25T19:12:17.536Z"}
+{"level":"info","message":"Sequelize models synced","service":"khetibuddy-be","timestamp":"2026-02-25T19:12:17.855Z"}
+{"level":"info","message":"Redis ready","service":"khetibuddy-be","timestamp":"2026-02-25T19:12:17.856Z"}
+{"level":"info","message":"Server listening on port 8080","service":"khetibuddy-be","timestamp":"2026-02-25T19:12:17.857Z"}

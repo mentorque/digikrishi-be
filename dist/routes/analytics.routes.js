@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { authMiddleware } from '../middleware/auth.middleware.js';
+import { auditMiddleware } from '../middleware/audit.middleware.js';
 import { allowRoles } from '../middleware/role.middleware.js';
 import * as analyticsController from '../controllers/analytics.controller.js';
 const router = Router();
 router.use(authMiddleware);
+router.use(auditMiddleware);
 router.use(allowRoles('TENANT', 'FIELD_OFFICER'));
 router.get('/summary', asyncHandler(analyticsController.summary));
 router.get('/by-district', asyncHandler(analyticsController.byDistrict));

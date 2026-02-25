@@ -15,6 +15,12 @@ export async function getOne(req: Request, res: Response) {
   res.json(farmer);
 }
 
+export async function getDocuments(req: Request, res: Response) {
+  const id = String(req.params.id ?? '');
+  const doc = await farmerService.getDocumentsById(id, (req as any).user.tenant_id);
+  res.json(doc);
+}
+
 export async function create(req: Request, res: Response) {
   const tenantId = (req as any).user.tenant_id;
   const agentId = (req as any).user.role === 'FIELD_OFFICER' ? (req as any).user.id : null;

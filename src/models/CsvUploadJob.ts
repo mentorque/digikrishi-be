@@ -15,8 +15,13 @@ const CsvUploadJob = sequelize.define(
       references: { model: 'tenants', key: 'id' },
     },
     file_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
+    },
+    s3_key: {
+      type: DataTypes.STRING(512),
+      allowNull: true,
+      comment: 'S3 object key; used by worker to stream CSV',
     },
     total_rows: {
       type: DataTypes.INTEGER,

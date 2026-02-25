@@ -9,5 +9,7 @@ import FarmerAgentMap from './FarmerAgentMap.js';
 import FarmerDoc from './FarmerDoc.js';
 import CsvUploadJob from './CsvUploadJob.js';
 import OtpLog from './OtpLog.js';
-export { sequelize, Tenant, User, Farmer, FarmerAddress, FarmerProfileDetails, FarmerLand, FarmerAgentMap, FarmerDoc, CsvUploadJob, OtpLog, };
+import UploadLog from './UploadLog.js';
+import AuditLog from './AuditLog.js';
+export { sequelize, Tenant, User, Farmer, FarmerAddress, FarmerProfileDetails, FarmerLand, FarmerAgentMap, FarmerDoc, CsvUploadJob, OtpLog, UploadLog, AuditLog, };
 //# sourceMappingURL=index.d.ts.map

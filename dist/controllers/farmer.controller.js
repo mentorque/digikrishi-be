@@ -11,6 +11,11 @@ export async function getOne(req, res) {
     const farmer = await farmerService.getById(id, req.user.tenant_id);
     res.json(farmer);
 }
+export async function getDocuments(req, res) {
+    const id = String(req.params.id ?? '');
+    const doc = await farmerService.getDocumentsById(id, req.user.tenant_id);
+    res.json(doc);
+}
 export async function create(req, res) {
     const tenantId = req.user.tenant_id;
     const agentId = req.user.role === 'FIELD_OFFICER' ? req.user.id : null;

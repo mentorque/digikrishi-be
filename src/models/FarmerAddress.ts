@@ -43,10 +43,10 @@ const FarmerAddress = sequelize.define(
     tableName: 'farmer_addresses',
     timestamps: false,
     indexes: [
-      { fields: ['farmer_id'] }, // join on Farmer
-      { fields: ['district'] },
-      { fields: ['state'] },
-      { fields: ['pincode'] },
+      { fields: ['farmer_id'] },
+      { fields: ['district'] }, // analytics GROUP BY district
+      { fields: ['state'] }, // analytics GROUP BY state
+      { fields: ['district', 'village'] }, // WHERE district = ? AND village = ?
     ],
   }
 );

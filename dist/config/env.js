@@ -16,5 +16,11 @@ export const env = {
     DUCKDB_PATH: process.env.DUCKDB_PATH || ':memory:',
     CSV_UPLOAD_PATH: process.env.CSV_UPLOAD_PATH || './uploads/csv',
     CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    // S3 (pre-signed upload)
+    AWS_REGION: process.env.AWS_REGION || 'ap-south-1',
+    AWS_S3_BUCKET: process.env.AWS_S3_BUCKET ?? '',
+    AWS_S3_BASE_PATH: process.env.AWS_S3_BASE_PATH || 'prod',
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID ?? '',
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY ?? '',
 };
 //# sourceMappingURL=env.js.map

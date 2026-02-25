@@ -1,8 +1,9 @@
-import fs from 'fs';
-import { createReadStream } from 'fs';
+import { Readable } from 'stream';
 import csv from 'csv-parser';
 import { Worker } from 'bullmq';
+import { GetObjectCommand } from '@aws-sdk/client-s3';
 import { env } from '../config/env.js';
+import { s3 } from '../config/s3.js';
 import {
   sequelize,
   Farmer,
@@ -21,6 +22,7 @@ const connection = {
   port: Number(env.REDIS_PORT),
 };
 
+/** Batch size for inserts: 100–1000 avoids memory spikes and locking; 100 is a safe default. */
 const BATCH_SIZE = 100;
 
 function validateRow(row: Record<string, string>) {
@@ -146,29 +148,37 @@ async function processBatch(
   return { success: created.length, failed: rows.length - created.length };
 }
 
+async function streamCsvRows(s3Key: string): Promise<Record<string, string>[]> {
+  const cmd = new GetObjectCommand({ Bucket: env.AWS_S3_BUCKET, Key: s3Key });
+  const res = await s3.send(cmd);
+  if (!res.Body) throw new Error('Empty S3 object');
+  const rows: Record<string, string>[] = [];
+  const stream = res.Body as Readable;
+  await new Promise<void>((resolve, reject) => {
+    stream
+      .pipe(csv({ mapHeaders: ({ header }: { header: string }) => header.trim() }))
+      .on('data', (row: Record<string, string>) => rows.push(row))
+      .on('end', () => resolve())
+      .on('error', reject);
+  });
+  return rows;
+}
+
 const worker = new Worker(
   'csv-ingestion',
   async (job) => {
-    const { jobId, filePath, tenantId, agentId } = job.data as {
+    const { jobId, s3Key, tenantId, agentId } = job.data as {
       jobId: string;
-      filePath: string;
+      s3Key: string;
       tenantId: string;
       agentId: string | null;
     };
     try {
-      if (!fs.existsSync(filePath)) {
-        throw new Error(`File not found: ${filePath}`);
+      if (!s3Key || !env.AWS_S3_BUCKET) {
+        throw new Error('Missing s3Key or AWS_S3_BUCKET');
       }
 
-      const rows: Record<string, string>[] = [];
-      await new Promise<void>((resolve, reject) => {
-        createReadStream(filePath)
-          .pipe(csv({ mapHeaders: ({ header }: { header: string }) => header.trim() }))
-          .on('data', (row: Record<string, string>) => rows.push(row))
-          .on('end', () => resolve())
-          .on('error', reject);
-      });
-
+      const rows = await streamCsvRows(s3Key);
       await CsvUploadJob.update({ total_rows: rows.length }, { where: { id: jobId } });
 
       for (let i = 0; i < rows.length; i += BATCH_SIZE) {
@@ -183,12 +193,6 @@ const worker = new Worker(
       }
 
       await csvService.setJobCompleted(jobId);
-
-      try {
-        fs.unlinkSync(filePath);
-      } catch (e: any) {
-        logger.warn('Could not delete CSV file', { filePath, error: e?.message });
-      }
     } catch (err: any) {
       logger.error('CSV job failed', {
         jobId,

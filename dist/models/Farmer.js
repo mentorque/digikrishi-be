@@ -9,7 +9,6 @@ const Farmer = sequelize.define('Farmer', {
     farmer_code: {
         type: DataTypes.STRING(50),
         allowNull: false,
-        unique: true,
     },
     user_id: {
         type: DataTypes.UUID,
@@ -74,6 +73,7 @@ const Farmer = sequelize.define('Farmer', {
         { fields: ['tenant_id'] },
         { fields: ['name'] },
         { fields: ['tenant_id', 'created_at'] }, // list with order by created_at
+        { unique: true, fields: ['tenant_id', 'farmer_code'] }, // unique per tenant; fast lookup
     ],
 });
 export default Farmer;

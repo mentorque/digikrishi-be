@@ -60,10 +60,7 @@ export async function bulkIndexFarmers(farmers: any[]) {
   await elasticsearchClient.bulk({ refresh: true, operations: body });
 }
 
-/**
- * Search farmers by name (full or partial, fuzzy), farmer code (exact or prefix),
- * farmer id (exact), or village (fuzzy). Returns ordered farmer ids for hydration.
- */
+
 export async function searchFarmers(
   query: string,
   tenantId: string,
